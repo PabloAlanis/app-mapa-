@@ -5,7 +5,7 @@ var baseLayer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/
 baseLayer.addTo(map);
 baseLayer.on('load',loadGeoJSon);
 // Initialise the FeatureGroup to store editable layers
-L.control.locate().addTo(map);//boton para geolocalizacion
+//L.control.locate().addTo(map);//boton para geolocalizacion
 var drawnItems = new L.FeatureGroup();
 map.addLayer(drawnItems);
 // Initialise the draw control and pass it the FeatureGroup of editable layers
@@ -14,7 +14,7 @@ var drawControl = new L.Control.Draw({
     featureGroup: drawnItems,
   }
 });
-map.addControl(drawControl);
+//map.addControl(drawControl);
 //
 
 //evento de agregar algo al mapa
