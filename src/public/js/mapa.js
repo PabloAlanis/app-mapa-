@@ -143,8 +143,8 @@ function loadGeoJSon(){
      }
   }
 
-  var mki = L.icon.mapkey({icon:"school",color:'#725139',background:'#f2c357',size:25});
-  var mkii = L.icon.mapkey({icon:"eye",color:'#725139',background:'#f2c357',size:40});
+  var mki = L.icon.mapkey({icon:"school",color:'#725139',background:'#f2c357',size:35,boxShadow:false,hoverScale:2});
+  var mkii = L.icon.mapkey({icon:"school",color:'#724539',background:'#f45789',size:35,boxShadow:false,hoverScale:2});
   var mapaMongo=$('#datoMongoose').html();
   var layerGroup = L.geoJSON(JSON.parse(mapaMongo), {
     onEachFeature:onEachFeature
