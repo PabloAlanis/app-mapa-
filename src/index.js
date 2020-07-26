@@ -13,7 +13,7 @@ app.set('view engine','ejs');//inicializo el motor de plantillas ejs-mate
 app.set('views',path.join(__dirname,'views'));//le digo al server donde esta la carpeta views
 
 //rutas- aca renderizo lo que quiera
-app.get('/', function(req,res){
+app.get('/', function(req,res){//raiz de localhost
   modeloPuntosBD.find(function(err,datos){
   var punto=datos;
   var stringPunto=JSON.stringify(punto);
@@ -21,6 +21,17 @@ app.get('/', function(req,res){
   res.render('index.ejs',{dato:stringPunto});//renderizo la vista dentro de views y le paso data de models mongoose
   });
 
+});
+
+app.get('/acerca', function(req,res){
+  res.send("acerca loco");
+});
+
+app.get('/borrar', function(req,res){
+  modeloPuntosBD.findByIdAndRemove("5f1e13558cfcea7a04be00ea", function (err) {
+  if (err) return next(err);
+   res.send('Deleted successfully!');
+  })
 });
 
 //inicializar servidor
