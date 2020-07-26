@@ -29,5 +29,5 @@ myGeo.index({geo : '2dsphere'});
 module.exports = mongoose.model('myGeo', myGeo);*/
 
 //modelos
-var puntos=mongoose.model('marcadores',{});//aca iria el esquema
+var puntos=mongoose.model('mygeos',{});//aca iria el esquema
 module.exports.puntosBD=puntos; //exporto la variable puntosDB con el modelo adentro
