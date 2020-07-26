@@ -15,7 +15,7 @@ app.set('views',path.join(__dirname,'views'));//le digo al server donde esta la 
 //rutas- aca renderizo lo que quiera
 app.get('/', function(req,res){
   modeloPuntosBD.find(function(err,datos){
-  var punto=datos[0];
+  var punto=datos;
   var stringPunto=JSON.stringify(punto);
   console.log('MONGO geoJSON: '+stringPunto);
   res.render('index.ejs',{dato:stringPunto});//renderizo la vista dentro de views y le paso data de models mongoose
