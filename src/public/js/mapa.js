@@ -79,47 +79,7 @@ function onLocationFound(e) {
 //var mapaMongo=$('#datoMongoose').html();
 //mapaMongo.JSON.stringify();
 //simulacion de geojson
-var punto={
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {"f1":"d"},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -67.50823974609375,
-          -45.868975197039205
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {"f1":"lcdetm"},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -67.52403259277344,
-          -45.882360730184025
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "f1": 11793,
-        "f2": "BT"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -67.50823974609375,
-          -45.87542933874844
-        ]
-      }
-    }
-  ]
-};
+
 
 
 //aca cargo/renderizo el geoJSON simple o con un each para cargar las propiedades en popup
@@ -135,18 +95,22 @@ var punto={
 
 //carga de geoJSON
 function loadGeoJSon(){
-
   function onEachFeature(feature, layer) {
-    layer.bindPopup(feature.properties.f1);
-    if (feature.properties.f1=="puntoA") {
-      layer.setIcon(mki);
-    }else {
-      layer.setIcon(mkii);
-     }
+    layer.bindPopup(feature.properties.f1);  //titulo del pop-up
+    //seteo de los iconos
+    if (feature.properties.prioridad=="Baja") {
+      layer.setIcon(iconoBajaPriori);
+    }else if (feature.properties.prioridad=="Media") {
+      layer.setIcon(iconoMediaPriori);
+    }else if (feature.properties.prioridad=="Alta") {
+      layer.setIcon(iconoAltaPriori);
+    }
   }
-
-  var mki = L.icon.mapkey({icon:"school",color:'#725139',background:'#f2c357',size:35,boxShadow:false,hoverScale:2});
-  var mkii = L.icon.mapkey({icon:"school",color:'#724539',background:'#f45789',size:35,boxShadow:false,hoverScale:2});
+  //configuracion de los iconos
+  var iconoBajaPriori = L.icon.mapkey({icon:"eye",color:'#725139',background:'#f2c357',size:35,boxShadow:false,hoverScale:2});
+  var iconoMediaPriori = L.icon.mapkey({icon:"school",color:'#724539',background:'#f45789',size:35,boxShadow:false,hoverScale:2});
+  var iconoAltaPriori=L.icon.mapkey({icon:"school",color:'#720039',background:'#f45009',size:35,boxShadow:false,hoverScale:2});
+  //configuracion de los iconos
   var mapaMongo=$('#datoMongoose').html();
   var layerGroup = L.geoJSON(JSON.parse(mapaMongo), {
     onEachFeature:onEachFeature
