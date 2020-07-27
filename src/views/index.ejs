@@ -39,7 +39,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="modalPunto">Datos del Punto</h3>
+        <h3 class="modal-title" id="modalPunto"><span class='mki-intext mki-volcano'></span> Datos del Punto</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -47,36 +47,35 @@
       <div class="modal-body">
         <p hidden id="datoMongoose"><%= dato %></p>
         <table class="table table-striped">
-<thead>
-<tr>
-  <th scope="col">#</th>
-  <th scope="col">First</th>
-  <th scope="col">Last</th>
-  <th scope="col">Handle</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <th scope="row">1</th>
-  <td>Mark</td>
-  <td>Otto</td>
-  <td>@mdo</td>
-</tr>
-<tr>
-  <th scope="row">2</th>
-  <td>Jacob</td>
-  <td>Thornton</td>
-  <td>@fat</td>
-</tr>
-<tr>
-  <th scope="row">3</th>
-  <td>Larry</td>
-  <td>the Bird</td>
-  <td>@twitter</td>
-</tr>
-</tbody>
-</table>
-
+         <thead>
+          <tr>
+           <th class="text-center" scope="col"><span class='mki-intext mki-download'></span></th>
+           <th class="text-center" scope="col"></th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <th class="text-center" scope="row">Nombre</th>
+          <td class="text-center" id="modalBodyA"></td>
+        </tr>
+        <tr>
+         <th class="text-center" scope="row">Id</th>
+         <td class="text-center" id="modalBodyId"></td>
+       </tr>
+       <tr>
+        <th class="text-center" scope="row">algo</th>
+        <td class="text-center" id="modalBodyB"></td>
+      </tr>
+      <tr>
+       <th class="text-center" scope="row">Prioridad</th>
+       <td class="text-center" id="modalPrioridad"></td>
+     </tr>
+     <tr>
+      <th class="text-center" scope="row">Fecha</th>
+      <td class="text-center"></td>
+    </tr>
+     </tbody>
+    </table>
         <h5 id="modalBodyA"></h5>
         <h5 id="modalBodyB"></h5>
         <h5 id="modalBodyId"></h5>
@@ -88,3 +87,35 @@
     </div>
   </div>
 </div>
+
+<!--tabla bootstrap
+<table class="table table-striped">
+<thead>
+<tr>
+<th scope="col">#</th>
+<th scope="col">First</th>
+<th scope="col">Last</th>
+<th scope="col">Handle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">1</th>
+<td>Mark</td>
+<td>Otto</td>
+<td>@mdo</td>
+</tr>
+<tr>
+<th scope="row">2</th>
+<td>Jacob</td>
+<td>Thornton</td>
+<td>@fat</td>
+</tr>
+<tr>
+<th scope="row">3</th>
+<td>Larry</td>
+<td>the Bird</td>
+<td>@twitter</td>
+</tr>
+</tbody>
+</table>-->

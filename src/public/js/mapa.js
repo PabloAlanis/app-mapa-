@@ -107,9 +107,9 @@ function loadGeoJSon(){
     }
   }
   //configuracion de los iconos
-  var iconoBajaPriori = L.icon.mapkey({icon:"eye",color:'#725139',background:'#f2c357',size:35,boxShadow:false,hoverScale:2});
-  var iconoMediaPriori = L.icon.mapkey({icon:"school",color:'#724539',background:'#f45789',size:35,boxShadow:false,hoverScale:2});
-  var iconoAltaPriori=L.icon.mapkey({icon:"school",color:'#720039',background:'#f45009',size:35,boxShadow:false,hoverScale:2});
+  var iconoBajaPriori = L.icon.mapkey({icon:"lighthouse",color:'#725139',background:'#f2c357',size:35,boxShadow:false,hoverScale:2});
+  var iconoMediaPriori = L.icon.mapkey({icon:"lighthouse",color:'#724539',background:'#f45789',size:35,boxShadow:false,hoverScale:2});
+  var iconoAltaPriori=L.icon.mapkey({icon:"lighthouse",color:'#720039',background:'#f45009',size:35,boxShadow:false,hoverScale:2});
   //configuracion de los iconos
   var mapaMongo=$('#datoMongoose').html();
   var layerGroup = L.geoJSON(JSON.parse(mapaMongo), {
@@ -130,9 +130,11 @@ function loadGeoJSon(){
       var id=clickedMarker.feature._id;//$('#datoMongoose').html();
       var datosA=clickedMarker.feature.properties.f1;
       var datosB=clickedMarker.feature.properties.f2;
+      var datosPrioridad=clickedMarker.feature.properties.prioridad;
       $('#modalBodyId').html(id);
       $('#modalBodyA').html(datosA);
       $('#modalBodyB').html(datosB);
+      $('#modalPrioridad').html(datosPrioridad);
       $('#modalMarcador').modal('show');
   });
 }
