@@ -27,8 +27,8 @@ app.get('/acerca', function(req,res){
   res.send("acerca loco");
 });
 
-app.get('/borrar', function(req,res){
-  modeloPuntosBD.findByIdAndRemove("5f1e13558cfcea7a04be00ea", function (err) {
+app.get('/borrar/:id', function(req,res){
+  modeloPuntosBD.findByIdAndRemove(req.params.id , function (err) {
   if (err) return next(err);
    res.send('Deleted successfully!');
   })
