@@ -1,7 +1,9 @@
 //iniciliazion del mapa
 var map;
 map = L.map('map',{ attributionControl: false,center: [-45.8209,-67.5378],zoom: 11.5,minZoom: 11, maxZoom: 22,zoomControl: true});//.setView([-45.8209,-67.5378],11,5);
-var baseLayer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',maxZoom: 22,maxNativeZoom:19});
+var baseLayer = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',maxZoom: 22,maxNativeZoom:19});
+//'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
+//'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
 baseLayer.addTo(map);
 baseLayer.on('load',loadGeoJSon);
 // Initialise the FeatureGroup to store editable layers
@@ -161,8 +163,10 @@ function loadGeoJSon(){
   //evento click sobre los marcadores
   layerGroup.on("click", function (e) {
       var clickedMarker = e.layer;
+      var id=clickedMarker.feature._id;//$('#datoMongoose').html();
       var datosA=clickedMarker.feature.properties.f1;
       var datosB=clickedMarker.feature.properties.f2;
+      $('#modalBodyId').html(id);
       $('#modalBodyA').html(datosA);
       $('#modalBodyB').html(datosB);
       $('#modalMarcador').modal('show');
