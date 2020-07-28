@@ -107,9 +107,9 @@ function loadGeoJSon(){
     }
   }
   //configuracion de los iconos
-  var iconoBajaPriori = L.icon.mapkey({icon:"lighthouse",color:'#725139',background:'#f2c357',size:35,boxShadow:false,hoverScale:2});
-  var iconoMediaPriori = L.icon.mapkey({icon:"lighthouse",color:'#724539',background:'#f45789',size:35,boxShadow:false,hoverScale:2});
-  var iconoAltaPriori=L.icon.mapkey({icon:"lighthouse",color:'#720039',background:'#f45009',size:35,boxShadow:false,hoverScale:2});
+  var iconoBajaPriori = L.icon.mapkey({icon:"lighthouse",color:'#720039',background:'#c9fa48',size:35,boxShadow:false,hoverScale:3});
+  var iconoMediaPriori = L.icon.mapkey({icon:"lighthouse",color:'#720039',background:'#effa48',size:35,boxShadow:false,hoverScale:3});
+  var iconoAltaPriori=L.icon.mapkey({icon:"lighthouse",color:'#720039',background:'#fa7b48',size:35,boxShadow:false,hoverScale:3});
   //configuracion de los iconos
   var mapaMongo=$('#datoMongoose').html();
   var layerGroup = L.geoJSON(JSON.parse(mapaMongo), {
