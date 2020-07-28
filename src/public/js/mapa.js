@@ -119,10 +119,10 @@ function loadGeoJSon(){
   layerGroup.on("mouseover",function(e){
     var clickedMarker=e.layer;
     clickedMarker.openPopup();
-    //$('#modalMarcador').modal('show');
+    //$('#modalHover').modal('show');
   })
   layerGroup.on("mouseout",function(e){
-    //$('#modalMarcador').modal('hide');
+    //$('#modalHover').modal('toggle');
   })
   //evento click sobre los marcadores
   layerGroup.on("click", function (e) {
