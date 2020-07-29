@@ -132,6 +132,8 @@ function loadGeoJSon(){
       var datosB=clickedMarker.feature.properties.f2;
       var datosPrioridad=clickedMarker.feature.properties.prioridad;
       $('#modalBodyId').html(id);
+      //$('#formularioBorrar').html();
+      $('#formBorrar').attr('action', '/borrar/'+id);//le envio el id al formulario de express
       $('#modalBodyA').html(datosA);
       $('#modalBodyB').html(datosB);
       $('#modalPrioridad').html(datosPrioridad);

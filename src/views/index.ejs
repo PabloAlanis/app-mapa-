@@ -53,7 +53,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <p hidden id="datoMongoose"><%= dato %></p>
+        <p hidden id="datoMongoose"><%= dato %></p><!--ejs-->
         <table class="table table-striped">
          <thead>
           <tr>
@@ -89,7 +89,9 @@
         <h5 id="modalBodyId"></h5>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Borrar</button>
+        <form id="formBorrar" method="post">
+          <button type="submit" class="btn btn-primary">Borrar</button>
+        </form>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>

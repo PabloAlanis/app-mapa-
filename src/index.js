@@ -15,6 +15,7 @@ app.set('views',path.join(__dirname,'views'));//le digo al server donde esta la 
 //rutas- aca renderizo lo que quiera
 app.get('/', function(req,res){//raiz de localhost
   modeloPuntosBD.find(function(err,datos){
+  //var id=datos[0].id;
   var punto=datos;
   var stringPunto=JSON.stringify(punto);
   console.log('MONGO geoJSON: '+stringPunto);
@@ -27,10 +28,12 @@ app.get('/acerca', function(req,res){
   res.send("acerca loco");
 });
 
-app.get('/borrar/:id', function(req,res){
+//formulario para borrar un punto
+app.post('/borrar/:id', function(req,res){
   modeloPuntosBD.findByIdAndRemove(req.params.id , function (err) {
   if (err) return next(err);
-   res.send('Deleted successfully!');
+   //res.send('Deleted successfully!');
+   res.redirect('/');
   })
 });
 
