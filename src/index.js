@@ -33,7 +33,7 @@ app.post('/borrar/:id', function(req,res){
   modeloPuntosBD.findByIdAndRemove(req.params.id , function (err) {
   if (err) return next(err);
    //res.send('Deleted successfully!');
-   res.redirect('/');
+   //res.redirect('/');
   })
 });
 

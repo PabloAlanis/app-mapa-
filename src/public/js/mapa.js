@@ -107,9 +107,9 @@ function loadGeoJSon(){
     }
   }
   //configuracion de los iconos
-  var iconoBajaPriori = L.icon.mapkey({icon:"lighthouse",color:'#720039',background:'#c9fa48',size:35,boxShadow:false,hoverScale:3});
-  var iconoMediaPriori = L.icon.mapkey({icon:"lighthouse",color:'#720039',background:'#effa48',size:35,boxShadow:false,hoverScale:3});
-  var iconoAltaPriori=L.icon.mapkey({icon:"lighthouse",color:'#720039',background:'#fa7b48',size:35,boxShadow:false,hoverScale:3});
+  var iconoBajaPriori = L.icon.mapkey({icon:"volcano",color:'#720039',background:'#c9fa48',size:35,boxShadow:false,hoverScale:3});
+  var iconoMediaPriori = L.icon.mapkey({icon:"volcano",color:'#720039',background:'#effa48',size:35,boxShadow:false,hoverScale:3});
+  var iconoAltaPriori=L.icon.mapkey({icon:"volcano",color:'#720039',background:'#fa7b48',size:35,boxShadow:false,hoverScale:3});
   //configuracion de los iconos
   var mapaMongo=$('#datoMongoose').html();
   var layerGroup = L.geoJSON(JSON.parse(mapaMongo), {
@@ -126,18 +126,33 @@ function loadGeoJSon(){
   })
   //evento click sobre los marcadores
   layerGroup.on("click", function (e) {
+    //ajax al Borrar
+    $(document).ready(function(){
+        $('#formBorrar').on('submit', function(e){
+            e.preventDefault();
+            //var data="dd";
+            //var data = $('input[name=quote]').val();
+            $.ajax({
+                type: 'post',
+                url:  '/borrar/'+id,
+                //data: data,
+                //dataType: 'text',
+                success: $('#modalMarcador').modal('toggle')
+            })
+
+        });
+    })
+    //ajax al Borrar
       var clickedMarker = e.layer;
       var id=clickedMarker.feature._id;//$('#datoMongoose').html();
       var datosA=clickedMarker.feature.properties.f1;
       var datosB=clickedMarker.feature.properties.f2;
       var datosPrioridad=clickedMarker.feature.properties.prioridad;
       $('#modalBodyId').html(id);
-      //$('#formularioBorrar').html();
-      $('#formBorrar').attr('action', '/borrar/'+id);//le envio el id al formulario de express
+      //$('#formBorrar').attr('action', '/borrar/'+id);//le envio el id al formulario de express
       $('#modalBodyA').html(datosA);
       $('#modalBodyB').html(datosB);
       $('#modalPrioridad').html(datosPrioridad);
       $('#modalMarcador').modal('show');
   });
 }
-//
