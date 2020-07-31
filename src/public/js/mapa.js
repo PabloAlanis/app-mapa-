@@ -135,13 +135,18 @@ function loadGeoJSon(){
             $.ajax({
                 type: 'post',
                 url:  '/borrar/'+id,
-                //data: data,
-                //dataType: 'text',
-                success: $('#modalMarcador').modal('toggle')
+                //data: {id:1},
+                //dataType: 'json',
+                success: borrarIcono(),
             })
 
         });
     })
+    //esta funcion borra el icono y cierra el modal - se la paso a ajax
+    function borrarIcono(){
+      map.removeLayer(clickedMarker);
+      $('#modalMarcador').modal('toggle');
+    }
     //ajax al Borrar
       var clickedMarker = e.layer;
       var id=clickedMarker.feature._id;//$('#datoMongoose').html();
