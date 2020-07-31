@@ -107,8 +107,8 @@ function loadGeoJSon(){
     }
   }
   //configuracion de los iconos
-  var iconoBajaPriori = L.icon.mapkey({icon:"volcano",color:'#720039',background:'#c9fa48',size:35,boxShadow:false,hoverScale:3});
-  var iconoMediaPriori = L.icon.mapkey({icon:"volcano",color:'#720039',background:'#effa48',size:35,boxShadow:false,hoverScale:3});
+  var iconoBajaPriori = L.icon.mapkey({icon:"pub",color:'#720039',background:'#c9fa48',size:35,boxShadow:false,hoverScale:3});
+  var iconoMediaPriori = L.icon.mapkey({icon:"fire",color:'#720039',background:'#effa48',size:35,boxShadow:false,hoverScale:3});
   var iconoAltaPriori=L.icon.mapkey({icon:"volcano",color:'#720039',background:'#fa7b48',size:35,boxShadow:false,hoverScale:3});
   //configuracion de los iconos
   var mapaMongo=$('#datoMongoose').html();
