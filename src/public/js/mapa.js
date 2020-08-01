@@ -40,11 +40,6 @@ map.on(L.Draw.Event.CREATED, function (e) {
 map.on('click', function(e) {
 //$('#modalPunto').modal('show');
 //$('.modalPunto-body').html(datos);
-Swal.fire(
-  'Good job!',
-  'You clicked the button!',
-  'success'
-)
 //$('.modal-body').html(layer.getLatLng().toString());
   //L.marker(e.latlng).addTo(map);
   //alert(e.latlng);
@@ -96,7 +91,7 @@ function onLocationFound(e) {
 //carga de geoJSON
 function loadGeoJSon(){
   function onEachFeature(feature, layer) {
-    layer.bindPopup(feature.properties.f1);  //titulo del pop-up
+    layer.bindPopup(feature.properties.nombre);  //titulo del pop-up
     //seteo de los iconos
     if (feature.properties.prioridad=="Baja") {
       layer.setIcon(iconoBajaPriori);
@@ -108,7 +103,7 @@ function loadGeoJSon(){
   }
   //configuracion de los iconos
   var iconoBajaPriori = L.icon.mapkey({icon:"pub",color:'#720039',background:'#c9fa48',size:35,boxShadow:false,hoverScale:3});
-  var iconoMediaPriori = L.icon.mapkey({icon:"fire",color:'#720039',background:'#effa48',size:35,boxShadow:false,hoverScale:3});
+  var iconoMediaPriori = L.icon.mapkey({icon:"pub",color:'#720039',background:'#effa48',size:35,boxShadow:false,hoverScale:3});
   var iconoAltaPriori=L.icon.mapkey({icon:"volcano",color:'#720039',background:'#fa7b48',size:35,boxShadow:false,hoverScale:3});
   //configuracion de los iconos
   var mapaMongo=$('#datoMongoose').html();
@@ -130,13 +125,9 @@ function loadGeoJSon(){
     $(document).ready(function(){
         $('#formBorrar').on('submit', function(e){
             e.preventDefault();
-            //var data="dd";
-            //var data = $('input[name=quote]').val();
             $.ajax({
                 type: 'post',
                 url:  '/borrar/'+id,
-                //data: {id:1},
-                //dataType: 'json',
                 success: borrarIcono(),
             })
 
@@ -150,14 +141,18 @@ function loadGeoJSon(){
     //ajax al Borrar
       var clickedMarker = e.layer;
       var id=clickedMarker.feature._id;//$('#datoMongoose').html();
-      var datosA=clickedMarker.feature.properties.f1;
-      var datosB=clickedMarker.feature.properties.f2;
-      var datosPrioridad=clickedMarker.feature.properties.prioridad;
-      $('#modalBodyId').html(id);
+      var datoNombre=clickedMarker.feature.properties.nombre;
+      var datoDescripcion=clickedMarker.feature.properties.descripcion;
+      var datoFecha=clickedMarker.feature.properties.fecha;
+      var datoPrioridad=clickedMarker.feature.properties.prioridad;
+      var longLat=clickedMarker.feature.geometry.coordinates;
+      $('#modalId').html(id);
       //$('#formBorrar').attr('action', '/borrar/'+id);//le envio el id al formulario de express
-      $('#modalBodyA').html(datosA);
-      $('#modalBodyB').html(datosB);
-      $('#modalPrioridad').html(datosPrioridad);
+      $('#modalNombre').html(datoNombre);
+      $('#modalDescripcion').html(datoDescripcion);
+      $('#modalPrioridad').html(datoPrioridad);
+      $('#modalLatLong').html(longLat);
+      $('#modalFecha').html(datoFecha);
       $('#modalMarcador').modal('show');
   });
 }
