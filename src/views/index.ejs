@@ -36,22 +36,67 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   </head>
   <body>
-
-    <form id="formAgregar" action="/agregar" method="post">
-      <input type="text" placeholder="nombre" name="nombre">
-      <input type="text" placeholder="descripcion" name="descripcion">
-      <input type="text" placeholder="prioridad" name="prioridad">
-      <button type="submit">Submit</button>
-    </form>
-
     <div id="map"></div>
     <div id="botonesMapa">
-      <button id="botonLocalizar" type="button" class="btn btn-lg  btn-success"> <span class='mki mki-viewpoint'></span> Algo</button>
+      <button id="botonLocalizar" onclick="localizar()" type="button" class="btn btn-lg  btn-success"> <span class='mki mki-viewpoint'></span> Buscame</button>
     </div>
+    <!--modal al geolocalizarse(cliente) - formulario-->
+    <!--modal al clickear un marcador-->
+    <div class="modal fade opacity" id="modalCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalPunto"><span class='mki-intext mki-volcano'></span> Datos del Punto</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Example select</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect2">Example multiple select</label>
+    <select multiple class="form-control" id="exampleFormControlSelect2">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+</form>
+          </div>
+          <div class="modal-footer">
+            <form id="formBorrar" method="post">
+              <button type="submit" class="btn btn-danger">Borrar</button>
+            </form>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--fin modal-->
     <script src="/js/mapa.js"></script>
   </body>
 </html>
-<!--modal al clickear un marcador(server)-->
+<!--modal al clickear un marcador-->
 <div class="modal fade opacity" id="modalMarcador" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -141,6 +186,16 @@
             </div>
         </div>
     </div>
+
+
+
+
+        <form id="formAgregar" action="/agregar" method="post">
+          <input type="text" placeholder="nombre" name="nombre">
+          <input type="text" placeholder="descripcion" name="descripcion">
+          <input type="text" placeholder="prioridad" name="prioridad">
+          <button type="submit">Submit</button>
+        </form>
 <!--modal hover-->
 <!--tabla bootstrap
 <table class="table table-striped">
