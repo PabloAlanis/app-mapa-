@@ -52,42 +52,36 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
+            <form action="/agregar" method="post">
+              
   <div class="form-group">
-    <label for="exampleFormControlInput1">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <label for="exampleFormControlInput1">Email</label>
+    <input type="email" class="form-control"  placeholder="nombre@ejemplo.com" name="email">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect1">Example select</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+    <label for="exampleFormControlInput2">Titulo</label>
+    <input type="text" class="form-control"  placeholder="Ingresa un titulo" name="titulo">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Prioridad</label>
+    <select class="form-control" name="prioridad">
+      <option class="">Baja</option>
+      <option class="">Media</option>
+      <option class="">Alta</option>
     </select>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
+    <label for="exampleFormControlTextarea1">Descripción</label>
+    <textarea class="form-control"  rows="2" name="descripcion"></textarea>
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-</form>
+
           </div>
           <div class="modal-footer">
-            <form id="formBorrar" method="post">
-              <button type="submit" class="btn btn-danger">Borrar</button>
-            </form>
+
+              <button type="submit" class="btn btn-info">Enviar</button>
+
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </form>
           </div>
         </div>
       </div>
@@ -190,7 +184,7 @@
 
 
 
-        <form id="formAgregar" action="/agregar" method="post">
+        <form >
           <input type="text" placeholder="nombre" name="nombre">
           <input type="text" placeholder="descripcion" name="descripcion">
           <input type="text" placeholder="prioridad" name="prioridad">
