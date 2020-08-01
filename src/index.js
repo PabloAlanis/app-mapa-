@@ -12,7 +12,9 @@ app.engine('ejs',engine);//inicializo el motor de plantillas ejs-mate
 app.set('view engine','ejs');//inicializo el motor de plantillas ejs-mate
 app.set('views',path.join(__dirname,'views'));//le digo al server donde esta la carpeta views
 
-//rutas- aca renderizo lo que quiera
+//rutas
+
+//traigo los puntos de mongo
 app.get('/', function(req,res){//raiz de localhost
   modeloPuntosBD.find(function(err,datos){
   //var id=datos[0].id;
@@ -21,7 +23,11 @@ app.get('/', function(req,res){//raiz de localhost
   console.log('MONGO geoJSON: '+stringPunto);
   res.render('index.ejs',{dato:stringPunto});//renderizo la vista dentro de views y le paso data de models mongoose
   });
+});
 
+//formulario para agregar un punto
+app.post('/agregar',function(req,res){
+    //console.log(req.body);
 });
 
 app.get('/acerca', function(req,res){
