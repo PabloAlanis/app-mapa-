@@ -1,9 +1,11 @@
 const express=require('express');
 const engine=require('ejs-mate');
 const path=require('path');
+const bodyparser=require('body-parser');
 
 //inicializaciones
 const app=express();//inicializo express
+app.use(bodyparser.urlencoded({ extended: true }));
 
 //settings
 app.use(express.static(path.join(__dirname,'public')));//enlaces a la carpeta public
@@ -27,7 +29,11 @@ app.get('/', function(req,res){//raiz de localhost
 
 //formulario para agregar un punto
 app.post('/agregar',function(req,res){
-    //console.log(req.body);
+    console.log(req.body);//muestra los datos del formulario mediante body-parser
+    modeloPuntosBD.create(req.body).then(result => {
+      console.log(result)
+    })
+    .catch(error => console.error(error))
 });
 
 app.get('/acerca', function(req,res){
