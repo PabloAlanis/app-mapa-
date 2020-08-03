@@ -28,10 +28,11 @@ app.get('/', function(req,res){//raiz de localhost
 });
 
 //formulario para agregar un punto
-app.post('/agregar',function(req,res){
+app.post('/agregar',(req,res) => {
     console.log(req.body);//muestra los datos del formulario mediante body-parser
     modeloPuntosBD.create(req.body).then(result => {
-      console.log(result)
+      console.log(result);
+      //res.send(req.body);
     })
     .catch(error => console.error(error))
 });
