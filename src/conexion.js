@@ -10,31 +10,29 @@ mongoose.connect(db,function (err){
 });
 
 //esquemas
-var Schema   = mongoose.Schema;
+const Schema   = mongoose.Schema;
 // Creates a GeoObject Schema.
 var myGeo= new Schema({
+                        type:{type:String,default:'Feature'},
                         properties:{
-                                    nombre:{type:String,default:'s'},
+                                    nombre:String,
                                     descripcion:String,
                                     prioridad:String,
-                                    fecha:{ type: Date, default: Date.now }
+                                    fecha:{type: Date, default: Date.now} ,
                         },
-                        geometry : {
-                                type : {
-                                         type: String,
-                                         enum: 'Point'
-                                },
-                                coordinates : Array
-                         }
+                        location:{
+                                type:{type: String , default:"Point"},
+                                coordinates : [{type: Number}]
+                     }
                      },
                      {versionKey:false}//deshabilita verion key __v:0 en mongo
  );
 
 //2dsphere index on geo field to work with geoSpatial queries
-myGeo.index({geometry : '2dsphere'});
-//module.exports = mongoose.model('myGeo', myGeo);
+//myGeo.index({location : "2dsphere"});
+//module.exports = mongoose.model('myGeos', myGeo);
 
 //modelos
 //var puntos=mongoose.model('mygeos',{});//aca iria el esquema
-var puntos=mongoose.model('mygeos',myGeo)
+var puntos=mongoose.model('mygeos',myGeo)//(coleccion,schema)
 module.exports.puntosBD=puntos; //exporto la variable puntosDB con el modelo adentro

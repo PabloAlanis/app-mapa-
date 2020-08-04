@@ -5,7 +5,7 @@ const bodyparser=require('body-parser');
 
 //inicializaciones
 const app=express();//inicializo express
-app.use(bodyparser.urlencoded({ extended: true }));
+
 
 //settings
 app.use(express.static(path.join(__dirname,'public')));//enlaces a la carpeta public
@@ -13,6 +13,8 @@ var modeloPuntosBD=require('./conexion').puntosBD;//traigo el modelo de mongoose
 app.engine('ejs',engine);//inicializo el motor de plantillas ejs-mate
 app.set('view engine','ejs');//inicializo el motor de plantillas ejs-mate
 app.set('views',path.join(__dirname,'views'));//le digo al server donde esta la carpeta views
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: false }));
 
 //rutas
 
@@ -27,14 +29,30 @@ app.get('/', function(req,res){//raiz de localhost
   });
 });
 
+app.post('/ssagregar',function(req,res){
+  var punto=new modeloPuntosBD();
+  punto.properties.nombre=req.body.nombre;
+  punto.location.coordinates=[2,3];
+  punto.save();
+  console.log(punto);
+})
 //formulario para agregar un punto
-app.post('/agregar',(req,res) => {
-    console.log(req.body);//muestra los datos del formulario mediante body-parser
-    modeloPuntosBD.create(req.body).then(result => {
-      console.log(result);
-      //res.send(req.body);
+app.post('/agregar',(req,res,next) => {
+  var punto=new modeloPuntosBD();
+    punto.properties.nombre=req.body.nombre;
+    punto.properties.descripcion=req.body.descripcion;
+    punto.properties.prioridad=req.body.prioridad;
+    //console.log(req.body);//muestra los datos del formulario mediante body-parser
+    punto.save().then((data) => {
+      res.send(data);
+      console.log(punto);
+      //console.log(punto.prioridad);
     })
-    .catch(error => console.error(error))
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the User.",
+      });
+    });
 });
 
 app.get('/acerca', function(req,res){
