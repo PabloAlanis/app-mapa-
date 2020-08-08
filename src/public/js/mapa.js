@@ -168,10 +168,15 @@ function localizar(){
     //var radius = e.accuracy / 2;
     var icono = L.marker(e.latlng,{icon:mkii}).addTo(map).bindPopup("<h5>Si es correcta tu ubicacion presioname, sino presiona el mapa</h5>").openPopup();
     icono.addTo(map);
+    //alert(e.latlng.lat);
     //var radio=L.circle(e.latlng,radius,{color:'#218838', border:'#218838'});
     //radio.addTo(map);
     icono.on('click',function(e){
       $('#modalCliente').modal('show');
+      var longPuntoNuevo=e.latlng.lng;
+      $('#long').val(longPuntoNuevo);
+      var latPuntoNuevo= e.latlng.lat;
+      $('#lat').val(latPuntoNuevo);
       map.closePopup();//cierra todos los popups
     });
     map.on('click',function(e){

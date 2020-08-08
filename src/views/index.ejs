@@ -53,26 +53,41 @@
           <div class="modal-body">
             <form id="formAgregar" action="/agregar" method="post">
 
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Email</label>
-    <input type="email" class="form-control"  placeholder="nombre@ejemplo.com" name="email">
+  <div class="form-group row">
+    <label for="email" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+       <input type="email" class="form-control"  placeholder="nombre@ejemplo.com" id="email" name="email">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="exampleFormControlInput2" class="col-sm-2 col-form-label">Nombre</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control"  placeholder="Ingresa un titulo" name="nombre">
+    </div>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput2">Nombre</label>
-    <input type="text" class="form-control"  placeholder="Ingresa un titulo" name="nombre">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Prioridad</label>
+    <label for="exampleFormControlSelect1"><span class='mki-intext mki-traffic_signal'></span> Prioridad</label>
     <select class="form-control" name="prioridad">
-      <option class="">Baja</option>
-      <option class="">Media</option>
-      <option class="">Alta</option>
+      <option class="table-success">Baja</option>
+      <option class="table-warning">Media</option>
+      <option class="table-danger">Alta</option>
     </select>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlTextarea1">Descripción</label>
+    <label for="exampleFormControlTextarea1"><span class='mki-intext mki-library'></span> Descripción</label>
     <textarea class="form-control"  rows="2" name="descripcion"></textarea>
   </div>
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlInput2"><span class='mki-intext mki-mountain'></span> Latitud</label>
+    <input type="text" class="form-control" id="lat" name="lat" readonly>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlInput2"><span class='mki-intext mki-mountain'></span> Longitud</label>
+    <input type="text" class="form-control" id="long" name="long" readonly>
+  </div>
+  </div>
+
 
           </div>
           <div class="modal-footer">

@@ -20,19 +20,19 @@ var myGeo= new Schema({
                                     prioridad:String,
                                     fecha:{type: Date, default: Date.now} ,
                         },
-                        location:{
-                                type:{type: String , default:"Point"},
-                                coordinates : [{type: Number}]
+                        geometry:{
+                                type:{type: String , enum:["Point"], default:"Point"},
+                                coordinates : [{type: Number},{type: Number}]
                      }
                      },
                      {versionKey:false}//deshabilita verion key __v:0 en mongo
  );
 
 //2dsphere index on geo field to work with geoSpatial queries
-//myGeo.index({location : "2dsphere"});
+myGeo.index({geometry : "2dsphere"});
 //module.exports = mongoose.model('myGeos', myGeo);
 
 //modelos
 //var puntos=mongoose.model('mygeos',{});//aca iria el esquema
 var puntos=mongoose.model('mygeos',myGeo)//(coleccion,schema)
-module.exports.puntosBD=puntos; //exporto la variable puntosDB con el modelo adentro
+module.exports.puntosBD=puntos; //exporto las variable puntosDB con el modelo adentro

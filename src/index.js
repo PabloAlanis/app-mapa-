@@ -29,22 +29,17 @@ app.get('/', function(req,res){//raiz de localhost
   });
 });
 
-app.post('/ssagregar',function(req,res){
-  var punto=new modeloPuntosBD();
-  punto.properties.nombre=req.body.nombre;
-  punto.location.coordinates=[2,3];
-  punto.save();
-  console.log(punto);
-})
 //formulario para agregar un punto
 app.post('/agregar',(req,res,next) => {
   var punto=new modeloPuntosBD();
     punto.properties.nombre=req.body.nombre;
     punto.properties.descripcion=req.body.descripcion;
     punto.properties.prioridad=req.body.prioridad;
+    punto.geometry.coordinates=[req.body.long,req.body.lat];
     //console.log(req.body);//muestra los datos del formulario mediante body-parser
     punto.save().then((data) => {
-      res.send(data);
+      //res.send(data);
+      res.redirect('/');
       console.log(punto);
       //console.log(punto.prioridad);
     })
