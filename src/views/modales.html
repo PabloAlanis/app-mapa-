@@ -1,0 +1,54 @@
+<div class="modal fade opacity" id="modalMarcador" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalPunto"><span class='mki-intext mki-volcano'></span> Datos del Punto</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p hidden id="datoMongoose"><%= dato %></p><!--ejs-->
+        <table class="table table-striped">
+         <thead>
+          <tr>
+           <th class="text-center" scope="col"><span class='mki-intext mki-download'></span></th>
+           <th class="text-center" scope="col"></th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <th class="text-center" scope="row">Nombre</th>
+          <td class="text-center" id="modalNombre"></td>
+        </tr>
+        <tr>
+         <th class="text-center" scope="row">Id</th>
+         <td class="text-center" id="modalId"></td>
+       </tr>
+       <tr>
+        <th class="text-center" scope="row">Fecha</th>
+        <td class="text-center" id="modalFecha"></td>
+      </tr>
+      <tr>
+       <th class="text-center" scope="row">Prioridad</th>
+       <td class="text-center" id="modalPrioridad"></td>
+     </tr>
+     <tr>
+       <th class="text-center">Lat-Long</th>
+       <td id="modalLatLong" class="text-center"></td>
+     <tr>
+      <th class="text-center" scope="row">Descripción</th>
+      <td id="modalDescripcion" class="text-center"></td>
+    </tr>
+     </tbody>
+    </table>
+      </div>
+      <div class="modal-footer">
+        <form id="formBorrar" method="post">
+          <button type="submit" class="btn btn-danger">Borrar</button>
+        </form>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -26,24 +26,85 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="/dist/L.Icon.Mapkey.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-
     <!--nuevo-->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
-<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
-<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
-<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="map"></div>
     <div id="botonesMapa">
-      <button id="botonLocalizar" type="button" class="btn btn-lg  btn-success"> <span class='mki mki-viewpoint'></span> Algo</button>
+      <button id="botonLocalizar" onclick="localizar()" type="button" class="btn btn-lg  btn-success"> <span class='mki mki-viewpoint'></span> Buscame</button>
     </div>
+    <!--modal al geolocalizarse(cliente) - formulario-->
+    <!--modal al clickear un marcador-->
+    <div class="modal fade opacity" id="modalCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalPunto"><span class='mki-intext mki-volcano'></span> Datos del Punto</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="formAgregar" action="/agregar" method="post">
+
+  <div class="form-group row">
+    <label for="email" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+       <input type="email" class="form-control"  placeholder="nombre@ejemplo.com" id="email" name="email">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="exampleFormControlInput2" class="col-sm-2 col-form-label">Nombre</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control"  placeholder="Ingresa un titulo" name="nombre">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1"><span class='mki-intext mki-traffic_signal'></span> Prioridad</label>
+    <select class="form-control" name="prioridad">
+      <option class="table-success">Baja</option>
+      <option class="table-warning">Media</option>
+      <option class="table-danger">Alta</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1"><span class='mki-intext mki-library'></span> Descripción</label>
+    <textarea class="form-control"  rows="2" name="descripcion"></textarea>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlInput2"><span class='mki-intext mki-mountain'></span> Latitud</label>
+    <input type="text" class="form-control" id="lat" name="lat" readonly>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlInput2"><span class='mki-intext mki-mountain'></span> Longitud</label>
+    <input type="text" class="form-control" id="long" name="long" readonly>
+  </div>
+  </div>
+
+
+          </div>
+          <div class="modal-footer">
+
+              <button type="submit" class="btn btn-success">Enviar</button>
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--fin modal-->
     <script src="/js/mapa.js"></script>
   </body>
 </html>
-<!--modal al clickear un marcador(server)-->
+<!--modal al clickear un marcador-->
 <div class="modal fade opacity" id="modalMarcador" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -133,6 +194,16 @@
             </div>
         </div>
     </div>
+
+
+
+
+        <form >
+          <input type="text" placeholder="nombre" name="nombre">
+          <input type="text" placeholder="descripcion" name="descripcion">
+          <input type="text" placeholder="prioridad" name="prioridad">
+          <button type="submit">Submit</button>
+        </form>
 <!--modal hover-->
 <!--tabla bootstrap
 <table class="table table-striped">

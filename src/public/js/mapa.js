@@ -156,3 +156,50 @@ function loadGeoJSon(){
       $('#modalMarcador').modal('show');
   });
 }
+
+//funcion de geolocalizacion
+function localizar(){
+  //esto permite geolocalizarse (apiREST)
+  map.locate({setView:true,maxZoom:17,enableHighAccuracy:true});
+
+  function onLocationFound(e) {
+    $('#botonLocalizar').attr("disabled", true); //deshabilito boton localizar
+    var mkii = L.icon.mapkey({icon:"smartphone",color:'#FFFFFF',background:'#69b777',size:70,opacity:0.8});
+    //var radius = e.accuracy / 2;
+    var icono = L.marker(e.latlng,{icon:mkii}).addTo(map).bindPopup("<h5>Si es correcta tu ubicacion presioname, sino presiona el mapa</h5>").openPopup();
+    icono.addTo(map);
+    //alert(e.latlng.lat);
+    //var radio=L.circle(e.latlng,radius,{color:'#218838', border:'#218838'});
+    //radio.addTo(map);
+    icono.on('click',function(e){
+      $('#modalCliente').modal('show');
+      var longPuntoNuevo=e.latlng.lng;
+      $('#long').val(longPuntoNuevo);
+      var latPuntoNuevo= e.latlng.lat;
+      $('#lat').val(latPuntoNuevo);
+      map.closePopup();//cierra todos los popups
+    });
+    map.on('click',function(e){
+      $('#botonLocalizar').attr("disabled", false);
+      //radio.remove(map);
+      icono.remove(map);
+
+    });
+  }
+
+   function onLocationError(e) {
+     Swal.fire({
+     position: 'top-end',
+     customClass:'swalModal',//busca en css
+     icon: 'error',
+     backdrop:false,
+     title: 'Tenes que activar la localización',
+     showConfirmButton: false,
+     timer: 3000
+     })
+    }
+   map.on('locationfound',onLocationFound);
+   map.on('locationerror',onLocationError);
+   //esto permite geolocalizarse (apiREST)
+}
+//fin localizar()
