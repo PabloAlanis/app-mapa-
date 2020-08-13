@@ -18,6 +18,7 @@ var myGeo= new Schema({
                                     nombre:String,
                                     descripcion:String,
                                     prioridad:String,
+                                    email:String,
                                     fecha:{type: Date, default: Date.now} ,
                         },
                         geometry:{

@@ -141,6 +141,7 @@ function loadGeoJSon(){
     //ajax al Borrar
       var clickedMarker = e.layer;
       var id=clickedMarker.feature._id;//$('#datoMongoose').html();
+      var datoEmail=clickedMarker.feature.properties.email;
       var datoNombre=clickedMarker.feature.properties.nombre;
       var datoDescripcion=clickedMarker.feature.properties.descripcion;
       var datoFecha=clickedMarker.feature.properties.fecha;
@@ -154,6 +155,7 @@ function loadGeoJSon(){
       $('#modalLatLong').html(longLat);
       $('#modalFecha').html(datoFecha);
       $('#modalMarcador').modal('show');
+      $('#modalEmail').html(datoEmail);
   });
 }
 

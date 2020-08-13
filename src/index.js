@@ -32,6 +32,7 @@ app.get('/', function(req,res){//raiz de localhost
 //formulario para agregar un punto
 app.post('/agregar',(req,res,next) => {
   var punto=new modeloPuntosBD();
+    punto.properties.email=req.body.email;
     punto.properties.nombre=req.body.nombre;
     punto.properties.descripcion=req.body.descripcion;
     punto.properties.prioridad=req.body.prioridad;
