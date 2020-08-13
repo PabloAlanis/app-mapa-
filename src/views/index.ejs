@@ -40,7 +40,9 @@
   <body>
     <div id="map"></div>
     <div id="botonesMapa">
-      <button id="botonLocalizar" onclick="localizar()" type="button" class="btn btn-lg  btn-success"> <span class='mki mki-viewpoint'></span> Buscame</button>
+      <button id="botonLocalizar" onclick="localizar()" type="button" class="btn  btn-success"> <span class='mki mki-viewpoint'></span> Buscame</button>
+      <button id="botonFullscreen" class="btn btn-primary" onclick="launchFullScreen(document.documentElement);"> Entrar en pantalla completa </button>
+      <button id="botonCerrarFullscreen" hidden class="btn btn-primary" onclick="cancelFullScreen();"> Salir de pantalla completa </button>
     </div>
     <!--modal al geolocalizarse(cliente) - formulario-->
     <!--modal al clickear un marcador-->
