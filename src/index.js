@@ -2,6 +2,7 @@ const express=require('express');
 const engine=require('ejs-mate');
 const path=require('path');
 const bodyparser=require('body-parser');
+//require('leaflet-sidebar-v2');
 
 //inicializaciones
 const app=express();//inicializo express

@@ -1,14 +1,18 @@
 //iniciliazion del mapa
 var map;
-map = L.map('map',{ attributionControl: false,center: [-45.8209,-67.5378],zoom: 11,minZoom: 11, maxZoom: 22,zoomControl: true,fullscreenControl: true,
-  fullscreenControlOptions: {
-    position: 'topleft'
-  }});//.setView([-45.8209,-67.5378],11,5);
+map = L.map('map',{ attributionControl: false,center: [-45.8209,-67.5378],zoom: 11,minZoom: 11, maxZoom: 22,zoomControl: true});//.setView([-45.8209,-67.5378],11,5);
 var baseLayer = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',maxZoom: 22,maxNativeZoom:19});
 //'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
 //'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
 baseLayer.addTo(map);
 baseLayer.on('load',loadGeoJSon);
+//prueba de plugin
+var sidebar = L.control.sidebar({
+    autopan: false,       // whether to maintain the centered map point when opening the sidebar
+    closeButton: true,    // whether t add a close button to the panes
+    container: 'sidebar', // the DOM container or #ID of a predefined sidebar container that should be used
+    position: 'left',     // left or right
+}).addTo(map);
 // Initialise the FeatureGroup to store editable layers
 //L.control.locate().addTo(map);//boton para geolocalizacion
 var drawnItems = new L.FeatureGroup();
@@ -230,4 +234,34 @@ function launchFullScreen(element) {
      }
      $('#botonCerrarFullscreen').attr("hidden", true);
      $('#botonFullscreen').attr("hidden", false);
+ }
+
+
+ // Hide submenus
+ $('#body-row .collapse').collapse('hide');
+
+ // Collapse/Expand icon
+ $('#collapse-icon').addClass('fa-angle-double-left');
+
+ // Collapse click
+ $('[data-toggle=sidebar-colapse]').click(function() {
+     SidebarCollapse();
+ });
+
+ function SidebarCollapse () {
+     $('.menu-collapsed').toggleClass('d-none');
+     $('.sidebar-submenu').toggleClass('d-none');
+     $('.submenu-icon').toggleClass('d-none');
+     $('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
+
+     // Treating d-flex/d-none on separators with title
+     var SeparatorTitle = $('.sidebar-separator-title');
+     if ( SeparatorTitle.hasClass('d-flex') ) {
+         SeparatorTitle.removeClass('d-flex');
+     } else {
+         SeparatorTitle.addClass('d-flex');
+     }
+
+     // Collapse/Expand icon
+     $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
  }
